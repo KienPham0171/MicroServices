@@ -1,0 +1,154 @@
+version: "3"
+
+services:
+ database:
+  image: mysql:8.0.24
+  ports:
+   - "3306:3306"
+  environment:
+   MYSQL_ROOT_PASSWORD: "Kien17101998"
+   MYSQL_PASSWORD: "Kien17101998"
+   MYSQL_DB: "learnJpa"
+  networks:
+   backend:
+    aliases:
+     - "database"
+  healthcheck:
+   test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+   interval: 10s
+   timeout: 5s
+   retries: 5
+ configserver:
+  image: keinpham/configserver:0.0.1-SNAPSHOT
+  ports:
+   - "8071:8071"
+  environment:
+   ENCRYPT_KEY: "fje83Ki8403Iod87dne7Yjsl3THueh48jfuO9j4U2hf64Lo"
+  networks:
+   backend:
+    aliases:
+     - "configserver"
+ eurekaserver:
+    image: keinpham/eurekaserver:0.0.1-SNAPSHOT
+    ports:
+      - "8070:8070"
+    depends_on:
+      database:
+        condition: service_healthy
+      configserver:
+        condition: service_started  
+    networks:
+      backend:
+        aliases:
+          - "eurekaserver"
+ licensingservice:
+   image: keinpham/licensing-service:0.0.1-SNAPSHOT
+   environment:
+    PROFILE: "dev"
+    CONFIGSERVER_URI: "http://configserver:8071"
+    CONFIGSERVER_PORT: "8071"
+    DATABASESERVER_PORT: "3306"
+    ENCRYPT_KEY: "IMSYMMETRIC"
+   depends_on:
+    database:
+     condition: service_healthy
+    configserver:
+     condition: service_started
+    eurekaserver:
+     condition: service_started
+   ports:
+     - "8090:8080"
+   networks:
+     - backend
+ gatewayserver:
+  image: keinpham/gatewayserver:0.0.1-SNAPSHOT
+  ports:
+   - "8073:8073"
+  environment:
+   CONFIGSERVER_URI: "http://configserver:8071"
+   EUREKASERVER_URI: "http://eurekaserver:8070/eureka"
+   EUREKASERVER_PORT: "8070"
+   CONFIGSERVER_PORT: "8071"
+  depends_on:
+   eurekaserver:
+    condition: service_started
+   configserver:
+    condition: service_started
+  networks:
+   backend:
+    aliases:
+     - "gateway"
+ organizationservice:
+  image: keinpham/organizationservice:0.0.1-SNAPSHOT
+  environment:
+   CONFIGSERVER_URI: "http://configserver:8071"
+   CONFIGSERVER_PORT: "8071"
+   DATABASESERVER_PORT: "3306"
+   ENCRYPT_KEY: "IMSYMMETRIC"
+  depends_on:
+   database:
+    condition: service_healthy
+   configserver:
+    condition: service_started
+  ports:
+   - "8072:8072"
+  networks:
+   - backend
+ keycloak:
+  image: jboss/keycloak:latest
+  restart: always
+  environment:
+   KEYCLOAK_USER: admin
+   KEYCLOAK_PASSWORD: admin
+  ports:
+   - "8080:8080"
+  networks:
+   backend:
+    aliases:
+     - 'keycloak'
+ zookeeper:
+  image: wurstmeister/zookeeper:latest
+  ports:
+   - 2181:2181
+  networks:
+   backend:
+    aliases:
+     - "zookeeper"
+ kafkaserver:
+  image: wurstmeister/kafka:latest
+  ports:
+   - 9092:9092
+  environment:
+  #  - KAFKA_ADVERTISED_HOST_NAME=kafka
+  #  - KAFKA_ADVERTISED_PORT=9092
+  #  - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+  #  - KAFKA_CREATE_TOPIC=dresses:1:1,ratings:1:1
+   KAFKA_BROKER_ID: 1
+   KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+   KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: |
+             PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+   KAFKA_ADVERTISED_LISTENERS: |
+    PLAINTEXT://127.0.0.1:9092,PLAINTEXT_HOST://127.0.0.1:29092
+   KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+   KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+  volumes:
+   - /var/run/docker.sock:/var/run/docker.sock
+  depends_on:
+   - zookeeper
+  networks:
+   backend:
+    aliases:
+     - "kafka"
+  
+ redisserver:
+  image: redis:alpine
+  ports:
+   - 6379:6379
+  networks:
+   backend:
+    aliases:
+     - "redis"
+
+networks:
+ backend:
+  driver: bridge

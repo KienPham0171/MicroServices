@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$USER_HOME$/Downloads/configserver/pom.xml" />
+        <option value="$USER_HOME$/Downloads/licensing-service/pom.xml" />
+        <option value="$USER_HOME$/Downloads/eurekaserver/pom.xml" />
+        <option value="$USER_HOME$/Downloads/organizationservice/pom.xml" />
+        <option value="$USER_HOME$/Downloads/manning-smia-master/chapter6/Final/pom.xml" />
+        <option value="$USER_HOME$/Downloads/manning-smia-master/chapter7/pom.xml" />
+        <option value="$USER_HOME$/Downloads/gatewayserver/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$USER_HOME$/Downloads/manning-smia-master/chapter6/Final/configserver/pom.xml" />
+        <option value="$USER_HOME$/Downloads/manning-smia-master/chapter6/Final/eurekaserver/pom.xml" />
+        <option value="$USER_HOME$/Downloads/manning-smia-master/chapter6/Final/licensing-service/pom.xml" />
+        <option value="$USER_HOME$/Downloads/manning-smia-master/chapter6/Final/organization-service/pom.xml" />
+        <option value="$USER_HOME$/Downloads/manning-smia-master/chapter7/configserver/pom.xml" />
+        <option value="$USER_HOME$/Downloads/manning-smia-master/chapter7/eurekaserver/pom.xml" />
+        <option value="$USER_HOME$/Downloads/manning-smia-master/chapter7/licensing-service/pom.xml" />
+        <option value="$USER_HOME$/Downloads/manning-smia-master/chapter7/organization-service/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="16" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

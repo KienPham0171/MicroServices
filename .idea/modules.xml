@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$USER_HOME$/Downloads/configserver/configserver.iml" filepath="$USER_HOME$/Downloads/configserver/configserver.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/eurekaserver/eurekaserver.iml" filepath="$USER_HOME$/Downloads/eurekaserver/eurekaserver.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/gatewayserver/gatewayserver.iml" filepath="$USER_HOME$/Downloads/gatewayserver/gatewayserver.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/licensing-service/licensing-service.iml" filepath="$USER_HOME$/Downloads/licensing-service/licensing-service.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/organizationservice/organizationservice.iml" filepath="$USER_HOME$/Downloads/organizationservice/organizationservice.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/manning-smia-master/chapter6/Final/ostock-parent-pom.iml" filepath="$USER_HOME$/Downloads/manning-smia-master/chapter6/Final/ostock-parent-pom.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/manning-smia-master/chapter7/ostock-parent-pom (1).iml" filepath="$USER_HOME$/Downloads/manning-smia-master/chapter7/ostock-parent-pom (1).iml" />
+    </modules>
+  </component>
+</project>

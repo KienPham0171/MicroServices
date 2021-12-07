@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$USER_HOME$/Downloads/configserver/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Downloads/configserver/src/main/resources" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Downloads/eurekaserver/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Downloads/eurekaserver/src/main/resources" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Downloads/gatewayserver/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Downloads/gatewayserver/src/main/resources" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Downloads/licensing-service/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Downloads/licensing-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Downloads/manning-smia-master/chapter6/Final/organization-service/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Downloads/manning-smia-master/chapter7/configserver/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Downloads/manning-smia-master/chapter7/eurekaserver/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Downloads/manning-smia-master/chapter7/licensing-service/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Downloads/manning-smia-master/chapter7/organization-service/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Downloads/organizationservice/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Downloads/organizationservice/src/main/resources" charset="UTF-8" />
+  </component>
+</project>
